@@ -35,5 +35,4 @@ open class ReposViewModel(application: Application?) : AndroidViewModel(applicat
         organizationLiveData.value = organization
         isLoadingLiveData.value = true
     }
-
 }

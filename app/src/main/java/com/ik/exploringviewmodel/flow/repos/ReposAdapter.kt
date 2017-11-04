@@ -25,7 +25,5 @@ class ReposAdapter : BaseAdapter<Repo, ReposAdapter.ReposViewHolder>() {
             tvName?.text = item.name
             tvDescription?.text = item.description
         }
-
     }
-
 }

@@ -24,6 +24,9 @@ object ReposRemoteDataSource : ReposDataSource {
                     .httpGet()
                     .rx_object(GsonDeserializer<List<Repo>>())
                     .map { it?.component1() ?: throw it?.component2() ?: throw Exception() }
-                    .doOnSuccess { it.onEach { it.organization = organization } }
-
+                    .doOnSuccess {
+                        it.onEach {
+                            it.organization = organization
+                        }
+                    }
 }

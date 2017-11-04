@@ -12,13 +12,13 @@ object ReposLocalDataSource : ReposDataSource {
     val reposDao = DatabaseCreator.database.reposDao()
 
     override fun getRepositories(organization: String): Single<List<Repo>>
-        = reposDao
-                .loadAllRepos(organization)
-                .firstOrError()
-                .doOnSuccess { if (it.isEmpty()) throw Exception() }
+            = reposDao
+            .loadAllRepos(organization)
+            .firstOrError()
+            .doOnSuccess { if (it.isEmpty()) throw Exception() }
 
 
     override fun saveRepositories(list: List<Repo>)
-        =  reposDao.insertAll(list.toMutableList())
+            = reposDao.insertAll(list.toMutableList())
 
 }

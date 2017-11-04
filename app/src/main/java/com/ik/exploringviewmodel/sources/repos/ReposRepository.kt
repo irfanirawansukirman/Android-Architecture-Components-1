@@ -12,12 +12,12 @@ import io.reactivex.schedulers.Schedulers
 object ReposRepository : ReposDataSource {
 
     override fun getRepositories(organization: String): Single<List<Repo>>
-        = ReposLocalDataSource
-                .getRepositories(organization)
-                .onErrorResumeNext {
-                    ReposRemoteDataSource.getRepositories(organization)
-                            .doOnSuccess { ReposLocalDataSource.saveRepositories(it) }
-                }
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
+            = ReposLocalDataSource
+            .getRepositories(organization)
+            .onErrorResumeNext {
+                ReposRemoteDataSource.getRepositories(organization)
+                        .doOnSuccess { ReposLocalDataSource.saveRepositories(it) }
+            }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 }
